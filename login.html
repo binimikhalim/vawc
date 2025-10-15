@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width-device-width, initial-scale=1.0">
+        <title> log in</title>
+        <link rel="stylesheet" href="monitoring.css">
+        
+    </head>
+
+        <div class="container">
+        <div class="form-box active" id="login-form">
+            
+            <form action="">
+                 <h2> Login </h2>
+                 <input type="email" placeholder="email" required>
+                 <input type="password" placeholder="password" required>
+                <a href="#">Forgot password?</a>
+                 <button type="submit" name="login">Login</button>
+                 <p> Don't  have an account? <a href="#" onclick="showForm('register-form')"> Register </a></p>
+
+            </form>
+        </div>
+
+         <div class="form-box" id="register-form">
+        
+            <form action="">
+                 <h2> Register </h2>
+                 <input type="text" placeholder="name" required>
+                 <input type="email" placeholder="email" required>
+                 <input type="password" placeholder="password" required>
+                 <select name="role" required>
+                    <option value="">--Select Role--</option> class=""></option>
+                    <option value="user"> VAWC Co-Worker</option>
+                    <option value="user">Admin</option>
+                </select>
+                 <button type="submit" name="register">Register</button>
+                 <p> Already have an account? <a href="#" onclick="showForm('login-form')"> Login </a></p>
+
+            </form>
+        </div>
+            
+           
+
+           
+
+    </div>  
+    <script src="vawc.js"></script>
+</body>
+    </html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>VAWC Management System</title>
+  <!--MATERIAL CDN-->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Sharp&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="vawc.css">    
+  </head>
+
+  <body>
+    <header class="header">
+       
+        </header>
+    
+    <div class="container">
+        <aside>
+            <div class="top">
+                <div class="logo">
+                    <img src="https://i.imgur.com/pKPjb8s.png">
+                    <h1>VAWC Management <p>System </p></h1>
+                </div>
+            
+            </div>
+            <div class="sidebar" class="">
+                <a href="dashboard.html" class="active">
+                    <span class="material-icons-sharp">dashboard</span>
+                
+                    <h2>DASHBOARD</h2>
+
+                </a>
+                <a href="manage.php">
+                    <span class="material-icons-sharp">manage_accounts</span>
+                    
+                    <h5>Manage Users</h5>
+                </a>
+
+                <a href="assign.php" class="">
+                    <span class="material-icons-sharp">manage_accounts</span>
+                    
+                    <h5>Assign Case </h5>
+
+                <a href="logout.php">
+                    <span class="material-icons-sharp">logout</span>
+                    
+                    <h5>LOG OUT</h5>
+                </a>
+            </div>
+        </aside>
+
+        <!-------end of aside------->
+
+        <div class="main">
+            <div class="cards">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="number">1234</div>
+                        <div class="card-name">Total Cases</div>
+                    </div>
+                    <div class="icon-box">
+                            <span class="material-icons-sharp">cases</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                    <div class="card-content">
+                        <div class="number">1234</div>
+                        <div class="card-name">Outgoing  Cases</div>
+                    </div>
+                    <div class="icon-box">
+                            <span class="material-icons-sharp">cases</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                    <div class="card-content">
+                        <div class="number">1234</div>
+                        <div class="card-name">Pending  Case</div>
+                    </div>
+                    <div class="icon-box">
+                            <span class="material-icons-sharp">cases</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                    <div class="card-content">
+                        <div class="number">1234</div>
+                        <div class="card-name"> Closed Case</div>
+                    </div>
+                    <div class="icon-box">
+                            <span class="material-icons-sharp">cases</span>
+                        </div>
+                    </div>
+            </div>
+            <div class="charts">
+                <div class="chart">
+                    <h2> Total of Cases ( past 12months )</h2>
+                    <canvas id="myChart"></canvas>
+                </div>
+                <div class="chart" id="doughnut-chart">
+                    <h2> Type of incident </h2>
+                    <canvas id="doughnut"></canvas>
+                </div>
+            </div>
+            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        
+
+
+ 
+ <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.5.0/chart.min.js"></script>
+
+ <script src="chart.js"></script>
+  <script src="chart2.js"></script>
+  </body>
+  </html>
+
+
+ 
