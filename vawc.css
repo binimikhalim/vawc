@@ -34,7 +34,7 @@ body {
     height: 100vh;
     font-family: poppins, sans-serif;
     font-size: 0.88rem;
-    background: var(--color-background);
+    background-color: rgb(190, 203, 213);
     user-select: none;
     overflow-x: hidden;
     color: var(--color-info-dark);
@@ -45,14 +45,15 @@ body {
 header {
     grid-area: header;
     background-image: linear-gradient(rgba(188, 167, 167, 0.75),rgba(14, 12, 12, 0.75)), url("https://i.imgur.com/wRDQTKq.jpeg"); 
-    height: 200px;
+    height: 130px;
     box-shadow: 0 6px 7px -3px rgba(255, 255, 255, 0.95);
-    background-color: rgba(174, 155, 133, 0.642);
+    background-color:var(--color-light);
    
 }
 
 .container {
     display: grid;
+    
     width: 100%;
     margin: 0 auto;
     gap: 1.8rem;
@@ -60,6 +61,7 @@ header {
 }
 a {
     color: var(--color-dark);
+    
 }
 
 h1 {
@@ -111,23 +113,15 @@ p {
     color: var(--color-warning);
 }
 
-aside {
-    height: 10vh;
-    box-shadow: 0 6px 7px -3px rgba(255, 255, 255, 0.95);
-    background-color: rgba(174, 155, 133, 0.642);
-  
-   
-
-}
 aside .top {
-    background: rgb(206, 187, 187);
-    box-shadow: 0 6px 7px -3px rgba(255, 255, 255, 0.95);
+    background-color:var(--color-light);;
+    
     border-width: 5px;
     text-align: center;
    
     display: flex;
     align-items: center;
-    margin-top: 1.4rem;
+    
 }
 
 aside .logo {
@@ -145,51 +139,18 @@ aside .logo img {
     align-items: center;
 }
 
-/* charts start here */
-
-.charts {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    grid-gap: 50px;
-    width: 100%;
-    padding: 10px;
-    padding-top: 5%;
-}
-
-.chart {
-    background-color: var(--color-white); 
-    border-radius: 10px;   
-    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.8);
-       
-    
-}
-.chart #myChart {
-    width: 90vh; 
-    margin-bottom: 4%;
-   
-}
-
-.chart h2 {
-    margin-bottom: 5%;
-    font-size: 20px;
-    text-align: center;
-    margin-top: 5%;
-    color: #666;
-    
-}
-
 
 /* ==== SIDE BAR ====*/
 
 aside .sidebar {
     
     box-shadow: 0 6px 7px -3px rgba(255, 255, 255, 0.95);
-    background-color: rgba(174, 155, 133, 0.642);
+    background-color:var(--color-light);
     
     display: flex;
     flex-direction: column;
-    height: 70vh;
-    position: relative;
+    height: 90vh;
+    position: sticky;
    
 
 }
@@ -214,21 +175,22 @@ aside .sidebar a span {
 
 aside .sidebar a:last-child {
     position: absolute;
-    bottom: 2rem;
-    width: 90%;
+    width: 10%;
+    bottom: 10px;
+   
 }
 
 aside .sidebar a.active {
-    background-color: var(--color-background);
+    background-color: var(--color-light);
     color: var(--color-white);
     margin-left: 0;
 }
 
 aside .sidebar a.active::before {
     content: '';
-    width: 6px;
+    width: 16px;
     height: 100%;
-    background: var(--color-primary);
+    background-color: white;
 }
 
 aside .sidebar a.active span {
@@ -249,10 +211,10 @@ aside .sidebar a:hover span {
 
 .main {
     position: absolute;
-    top: 250px;
+    top: 200px;
     width: calc(100%-260px);
     left: 260px;
-    min-height: calc(100vh - 60px);
+    
 
     left: 260px;
 }
@@ -274,313 +236,43 @@ aside .sidebar a:hover span {
     align-items: center;
     justify-content: space-between;
     box-shadow: 0 6px 7px -3px rgba(255, 255, 255, 0.95);
-    background-color: rgba(219, 206, 206, 0.982);
+    background-color:var(--color-light);
+   
     border-radius: 10px;
     
 }
+
 .number {
     font-size: 30px;
     font-weight: 500;
     text-align: left;
-    color: var(--color-dark);
+    color: var(--color-white);
 }
 
 .card-name {
-    color: var(--color-dark);
+    color: var(--color-white);
     font-weight: 600;
     margin-top: 10%;
 }
 
 .icon-box span {
     font-size: 30px;
+    color: var(--color-white);
     margin-left: 50%;
     
 }
 
-/* charts start here */
 
-.charts {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    grid-gap: 50px;
-    width: 100%;
-    padding: 10px;
-    padding-top: 5%;
-}
-
-.chart {
-    background-color: var(--color-white); 
-    border-radius: 10px;   
-    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.8);
-       
-    
-}
-.chart #myChart {
-    width: 50vh; 
-    margin-bottom: 4%;
-    margin-left : 10px;
-   
-}
-.chart #doughnut {
-    margin-left : 10px;
-}
-.chart h2 {
-    margin-bottom: 5%;
-    font-size: 20px;
-    text-align: center;
-    margin-top: 5%;
-    color: #666;
-    
-}
-
-
-
-
-/*=== Report incident=== */
-
-.form-container {
-    margin-top: 1.5rem;
-    background-color:  rgba(174, 155, 133, 0.642);
-    width: 60rem;
-    height: 50rem;
-    overflow-y: auto;
-    border-radius: 10px;
-    display: flex;
-    gap: 15px;
-    padding: 1rem;
-    box-sizing: border-box;   
-}
-
-.form-container .report h2 {
-    padding-left: 1rem;
-    color: var(--color-white);
-    margin-bottom: 1rem;
-    background-color: #653535;
-}
-.input-cnt > input[type="text"] {
-    border: 1px solid black;
-    height: 25%;
-    padding: 10px;
-    width: 30%;
-    margin-right: 20px;
-    margin-top: 10px;
-}
-
-.input-cnt >  [type="age"] {
-    width: 5%;
-    height: 25%;
-    border: 1px solid black;
-    padding: 10px;;
-    margin-right: 10px;
-    margin-top: 10px;
-}
-
-.input-cnt >  [type="date"] {
-    width: 10%;
-    height: 2%;
-    padding: 10px;;
-    margin-right: 20px;
-    margin-top: 10px;
-    border: 1px solid black;
-    font-size: 12px; 
-}
-
-.input-cnt >  [name="sex-select"] {
-    width: 10%;
-    height: 25%;
-    padding: 10px;;
-    margin-right: 20px;
-    border: 1px solid black;
-    margin-top: 10px;
-    font-size: 12px; 
-}
-
-.input-cnt >  [type="status-select"] {
-    width: 8.5;
-    height: 25%;
-    padding: 10px;;
-    margin-right: 10px;
-    border: 1px solid black;
-    margin-top: 10px;
-    font-size: 12px; 
-}
-
-.input-cnt >  [for="status-select"] {
-    margin-right: 10px;
-    font-size: 10px;
-}
-
-.input-cnt >  [for="sex-select"] {
-    font-size: 10px;
-    margin-right: 10px;
-}
-
-.input-cnt >  [for="bday-date"] {
-    font-size: 10px;
-    margin-right: 10px;
-}
-
-.report h2 {
-    padding-left: 1rem;
-    color: var(--color-white);
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    background-color: #653535;
-}
-
-.input-cnt >  [type="type-incident"] {
-    width: 10%;
-    height: 25%;
-    padding: 10px;;
-    margin-right: 10px;
-    margin-left: 4px;
-    margin-top: 10px;
-    border: 1px solid black;
-    font-size: 12px; 
-}
-
-.input-cnt >  [name="text"] {
-    width: 10%;
-    height: 25%;
-    padding: 10px;;
-    margin-right: 10px;
-    margin-top: 10px;
-    border: 1px solid black;
-    font-size: 12px; 
-}
-
-.input-cnt >  [for="date"] {
-    font-size: 12px; 
-   
-}
-
-.input-cnt >  [for="incident"] {
-    font-size: 12px; 
-    margin-right: 10px;
-   
-}
-
-.input-cnt >  [for="type-incident"] {
-    
-    font-size: 12px; 
-    
-}
-
-
-.input-cnt >  [type="date"] {
-    width:10%;
-    height: 20%;
-}
-
-.input-cnt >  [for="description"], .input-cnt > textarea{
-    margin-top: 15px;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    padding: 5px;
-    font-size: 13px;   
-}
-
-.input-cnt >  [placeholder="description"] {
-    width: 300px;
-    height: 200px;
-}
-
-.input-cnt >  [for="date-incident"] {
-    font-size: 12px;
-    
-
-}
-
-.input-cnt >  [type="date-incident"] {
-    width: 10%;
-    height: 25%;
-    padding: 10px;
-    margin-top: 10px;
-    border: 1px solid black;
-    margin-left: 6px;
-    font-size: 12px; 
-
-
-}
-
-.input-cnt >  [type="vawc"] {
-    width: 27%;
-    height: 25%;
-    padding: 10px;
-    margin-left: 8px;
-    margin-top: 10px;
-    border: 1px solid black;
-    font-size: 12px; 
-}
-
-.input-cnt > [type="brgy"], .input-cnt > [type="city"],  .input-cnt > [type="rs"] {
-    width: 17%;
-    height: 25%;
-    padding: 10px;
-    margin-left: 8px;
-    margin-top: 10px;
-    border: 1px solid black;
-    font-size: 12px;
-}
-
-.search-container{
-    position: relative;
-    width: 400px;
-    margin: 0 10px;
-}
-.search-container label {
-    position: relative;
-    width: 100%;
-
-}
-
-.search-container label input {
-    width: 100%;
-    height: 40px;
-    border-radius: 50px;
-    margin-top: 5%;
-    padding: 5px 20px;
-    padding-left: 35px;
-    font-size: 18px;
-    outline: none;
-    border: 1px solid;
-}
-
-.search-container label span {
-    position: absolute;
-    top: 0;
-    left: 10px;
-    font-size: 1.2rem;
-}
-.input-cnt  >  label[for="attachments"]  {
-    grid-column: 1 / -1;
-    font-size: 0.8rem;
-    margin-top: 1.5rem;
-    
-}
-
-.input-cnt button[type="submit"] {
-
-    padding: 0.4rem;
-    background: var(--color-white);
-    color: var(--color-dark-variant);
-    border: none;
-    border-radius: var(--border-radius-2);
-    cursor: pointer;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-
-}
  /* ==== manage side ====*/
 
 .section-1 {
     padding: 40px;
     margin-top: 5%;
-    margin-left: 30%;
+    margin-left: 10%;
     background-color: rgb(162, 153, 140);
     border-radius: 10px;
-    width: 100%;
+    width: 120%;
+    height: 50rem;
     align-items: center;
 
 
@@ -676,3 +368,47 @@ aside .sidebar a:hover span {
    
     width: 70%;
 }
+label {
+    display: block;
+}
+
+ /* ==== notification side ====*/
+
+ .container .notificaion span {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    background: #C80000;
+    padding: 1px;
+    border-radius: 50%;
+ }
+ .header1 .notification {
+    position: relative;
+    cursor: pointer;
+ }
+ .header1 .notification:hover span {
+    color: #127b8e;
+ }
+ .notification-bar {
+    display: none;
+    width: 90%;
+    max-width: 300px;
+    position: absolute;
+    right: 0;
+    background: #eee;
+    padding: 5px;
+    border: 1px solid #262931;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+ }
+ .notification-bar ul li {
+    list-style: none;
+    margin-top: 10px;
+ }
+ .notification-bar ul li a {
+    text-decoration: none;
+    color: #000000;
+ }
+
+ .open-notification {
+    display: block;
+ }

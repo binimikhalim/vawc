@@ -1,16 +1,37 @@
 <?php
-session_start();
+include "db_conn.php";
+
+if(isset($_POST['submit'])) {
+    $full_name = $_POST['full_name'];
+    $email = $_POST['email'];
+    $user_name = $_POST['user_name'];
+    $number	 = $_POST['number'];
 
 
-if (!isset($_SESSION['role']) && isset($_SESSION['id'])){
-    include "config.php";
-    include "User.php";
+    $sql = "INSERT INTO `manage`(`id`, `full_name`, `email`, `user_name`, `number`) VALUES (NULL,'$full_name','$email','$user_name','$number')";
+    $sql = "SELECT * FROM users";
+    if(isset($_GET["search"])) {
+        $search_term = $_GET["search"];
+        $sql .= "WHERE name LIKE '%$search_term%'";
+    }
 
-    $users = get_all_users($conn);
+    $result = mysqli_query($conn, $sql);
 
-
+    
+    
+    if($result) {
+        header("Location: index.php?msg=New record created sucessfully");
+    }else {
+        echo "Failed" . mysqli_error($conn);
+    }
 }
+
+
 ?>
+
+
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -29,6 +50,7 @@ if (!isset($_SESSION['role']) && isset($_SESSION['id'])){
         </header>
     
     <div class="container">
+
         <aside>
             <div class="top">
                 <div class="logo">
@@ -37,25 +59,25 @@ if (!isset($_SESSION['role']) && isset($_SESSION['id'])){
                 </div>
             
             </div>
-            <div class="sidebar" class="">
-                <a href="dashboard.html" class="">
+            <div class="sidebar">
+                <a href="dashboard.php" class="">
                     <span class="material-icons-sharp">dashboard</span>
                 
                     <h2>DASHBOARD</h2>
 
                 </a>
-                <a href="manage.php" class="active">
+              
+                <a href="index.php" class="active">
                     <span class="material-icons-sharp">manage_accounts</span>
                     
                     <h5>Manage Users</h5>
                 </a>
 
-                 <a href="assign.php" class="">
-                    <span class="material-icons-sharp">manage_accounts</span>
+                 <a href="create_task.php" class="">
+                    <span class="material-icons-sharp">assignment_ind</span>
                     
                     <h5>Assign Case </h5>
                 </a>
-
                 <a href="logout.php">
                     <span class="material-icons-sharp">logout</span>
                     
@@ -65,41 +87,162 @@ if (!isset($_SESSION['role']) && isset($_SESSION['id'])){
         </aside>
 
 
-        <section class="section-1">
-           <h4 class="title"> Manage Worker <a href="add-worker.php"> Add Vawc Worker </a></h4>
-           <?php if (!empty($users)) { ?>
-             
+        <style> 
 
-           <table class="table">
-            <tr>
-                <th>#</th>
-                <th>Name</th>
-                <th>email</th>
-                <th>Role</th>
-                <th>action</th>
+        .container-3 {
+          position: relative;
+       
+          width: 150%;
+          margin-top: 5%;
+          
 
-            </tr>
+        }
+        .text-center {
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+           
+        }
+        .row{
+            background-color:  rgba(174, 155, 133, 0.642);
+           
+        }
+        label {
+            font-size: 15px;
+            padding: 12px;
+
+        }
+        input {
+            margin-left: 13px;
+            padding: 12px;
+            width: 60%;
+            border-radius: 10px;
+            border: 1px solid;
+            margin-bottom: 20px;
+        }
+        button {
+            background-color: green;
+            padding: 10px;
+            margin-left: 10px;
+            margin-bottom: 10px;
+            font-size: 15px;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+        table {
+            background-color: #f2f2f2;
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 6%;
+            margin-left: 20px;
             
-            <?php 
-            $i = 0;
-            foreach ($users as $user) { 
-            ?>
-                <tr>
-                    <td><?= ++$i ?></td>
-                    <td><?= htmlspecialchars($user['name']) ?></td>
-                    <td><?= htmlspecialchars($user['username']) ?></td>
-                    <td><?= htmlspecialchars($user['role']) ?></td>
-                    <td>
-                        <a href="edit-user.php?id=<?= $user['id'] ?>" class="edit-btn">Edit</a>
-                        <a href="delete-user.php?id=<?= $user['id'] ?>" class="delete-btn">Delete</a>
-                    </td>
-                </tr>
-            <?php 
-            } 
-            ?>
-        </table>
-    <?php } else { ?>
-        <h3>Empty</h3>
-    <?php } ?>
-</div>
-    
+        }
+        thead {
+        background-color: #3f2323ff;
+        border-bottom: 2px solid #ddd;
+       
+        }
+
+        th {
+        padding: 12px;
+        text-align: left;
+        border: 1px solid #ddd;
+        color: white;
+        }
+        .text- a {
+            color: black;
+            background: #80CCE3;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 10px;
+            margin-left: 20px;
+        }
+        .text-red {
+        color: red;
+        padding: 15px;
+        }
+        .text-green {
+            color: green;
+            padding: 15px;
+        }
+       
+        
+
+
+
+        </style>
+
+        <body>
+            <div class="container-3">
+                <form action="" method="get">
+                    <input type="text" class="form-control" name="search" placeholder="Search user by name">
+                </form>
+                <?php
+                if (isset($_GET['mgs'])) {
+                    $mgs = $_GET['msg'];
+                    echo '<div class="alert alert-warning alert-dismissible fade show"role="alert">
+                    '.$msg.'
+                    <button type="button" class="btn=close" data-bs-dismiss="alert"
+                    aria-label="Close"></button>
+                    </div>';
+
+                }
+                ?>
+                <div class="text-">
+                <a href="index.php" class="btn btn-dark"> Add user</a>
+            </div>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            
+                            <th scope="col">Full name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Username</th>
+                            <th scope="col">Contact Number</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        include "db_conn.php";
+                          $sql = "SELECT * FROM manage";
+                          $result = mysqli_query($conn, $sql);
+                          if(mysqli_num_rows($result) > 0) {
+
+                          while ($row = mysqli_fetch_assoc($result)) {
+
+                          
+                            ?>
+                            <tr>
+                                <td><?php echo $row['id']?></td>
+                                <td><?php echo $row['full_name']?></td>
+                                <td><?php echo $row['email']?></td>
+                                <td><?php echo $row['user_name']?></td>
+                                <td><?php echo $row['number']?></td>
+                               
+                            <td>
+                                <a href="delete.php?id=<?php echo $row['id']?>" class="link-dark text-red"><span class="material-icons-sharp">delete</span></i></a>
+                                <a href="edit.php?id=<?php echo $row['id']?>" class="link-dark text-green"><span class="material-icons-sharp">edit</span></i></a>
+                            </td>
+                        </tr>
+                            
+                            <?php
+                          }
+                        } else {
+                            echo "No result found";
+                        }
+                        ?>
+                        
+                    </tbody>
+                </table>
+            </div>
+        </body>
+        
+</body>
+</html>
+
+<?php
+mysqli_close($conn);
+                        

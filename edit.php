@@ -9,11 +9,12 @@ if(isset($_POST['submit'])) {
 
 
     $sql = "INSERT INTO `manage`(`id`, `full_name`, `email`, `user_name`, `number`) VALUES (NULL,'$full_name','$email','$user_name','$number')";
-    
+
+
     $result = mysqli_query($conn, $sql);
     
     if($result) {
-        header("Location: manage.php?msg=New record created sucessfully");
+        header("Location: index.php?msg=New record created sucessfully");
     }else {
         echo "Failed" . mysqli_error($conn);
     }
@@ -32,9 +33,7 @@ if(isset($_POST['submit'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    
     <link href="https://cdn.jsdeliver.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-
 </head>
 <body>
     <header class="header">
@@ -53,15 +52,14 @@ if(isset($_POST['submit'])) {
                 </div>
             
             </div>
-            <div class="sidebar">
+            <div class="sidebar" class="">
                 <a href="dashboard.php" class="">
                     <span class="material-icons-sharp">dashboard</span>
                 
                     <h2>DASHBOARD</h2>
 
                 </a>
-
-                <a href="index.php" class="active">
+                <a href="manage.php" class="active">
                     <span class="material-icons-sharp">manage_accounts</span>
                     
                     <h5>Manage Users</h5>
@@ -95,9 +93,10 @@ if(isset($_POST['submit'])) {
             margin-bottom: 20px;
            
         }
-
+        .row{
+            background-color:  rgba(174, 155, 133, 0.642);
            
-        
+        }
         label {
             font-size: 15px;
             padding: 12px;
@@ -120,53 +119,55 @@ if(isset($_POST['submit'])) {
             cursor: pointer;
             border-radius: 10px;
         }
-        .container-2 a {
-             color: black;
-            background: #80CCE3;
-            cursor: pointer;
-            padding: 15px;
-            border-radius: 10px;
-            margin-left: 20px;
-        }
 
 
 
         </style>
-        
 
         <body>
-
             <div class="container-2">
-                
                 <div class="text-center">
-                    <a href="manage.php" class="btn btn-dark"> View users</a>
+                    <h3> Edit User information</h3>
+                    <p class="text-muted">Click update after changing any information </p>
                 </div>
+
+                <?php
+                $id = $_GET['id'];
+                $sql = "SELECT * FROM `manage` WHERE id = $id LIMIT 1";
+                $result = mysqli_query($conn, $sql);
+                $row = mysqli_fetch_assoc($result);
+
+                ?>
                 <div class="container d-flex justify-content-center">
                     <form action="" method="post" style="width:50vw; min-width: 300px;">
                         <div class="row">
                             <div class="col">
                                 <label for="form-label1">Full Name </label>
-                                <input type="text" class="form-control" name="full_name" >
+                                <input type="text" class="form-control" name="full_name"
+                                value="<?php echo $row['full_name']?>">
                          </div>
 
                         <div>
                           <label for="form-label1">Email </label>
-                            <input type="text" class="form-control" name="email">
+                            <input type="text" class="form-control" name="email"
+                            value="<?php echo $row['email']?>">
                             </div>
 
                             <div>
                                 <label for="form-label1">Username </label>
-                                <input type="text" class="form-control" name="user_name">
+                                <input type="text" class="form-control" name="user_name"
+                                value="<?php echo $row['user_name']?>">
                             </div>
 
                             <div>
                                 <label for="form-label1"> Contact Number </label>
-                                <input type="text" class="form-control" name="number">
+                                <input type="text" class="form-control" name="number"
+                                value="<?php echo $row['number']?>">
                             </div>
 
                             <div>
                         <button type="submit" class="btn btn-sucess" name="submit"> Save</button>
-                        <button type="cancel" class="btn-btn-danger"> Cancel</a>
+                        <a href="index.php" class="btn-btn-danger"> Cancel</a>
                       </div>
                       </div>
 

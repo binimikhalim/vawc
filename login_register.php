@@ -34,9 +34,9 @@ if (isset($_POST['login'])) {
             $_SESSION['email'] = $user ['email'];
 
             if($user['role'] === 'admin') {
-                header ("Location: dashboard.html");
+                header ("Location: dashboard.php");
             } else {
-                header ("Location: vawc_page.html");
+                header ("Location: vawc_page.php");
             }
             
             exit();

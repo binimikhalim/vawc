@@ -4,7 +4,7 @@
 $host = "localhost";
 $user ="root";
 $password = "";
-$database = "vawc_management.db";
+$database = "vawc_management";
 
 $conn = new mysqli($host, $user, $password, $database);
 
